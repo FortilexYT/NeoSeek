@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "title": "Bienvenue sur NeoSeek",
+    "content": "Ceci est ton premier document indexé."
+  },
+  {
+    "id": 2,
+    "title": "Test de recherche",
+    "content": "NeoSeek utilise Meilisearch pour trouver rapidement les informations."
+  },
+  {
+    "id": 3,
+    "title": "Projet IA",
+    "content": "Ce moteur est codé avec une API open source et une interface moderne."
+  }
+]

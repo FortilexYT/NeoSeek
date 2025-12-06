@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  meilisearch:
+    image: getmeili/meilisearch:v1.7
+    container_name: meilisearch
+    ports:
+      - "7700:7700"
+    environment:
+      MEILI_MASTER_KEY: "MASTER_KEY"
+    volumes:
+      - ./backend/meilisearch:/meili_data
+
+  frontend:
+    build: ./frontend
+    container_name: neoseek-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - meilisearch

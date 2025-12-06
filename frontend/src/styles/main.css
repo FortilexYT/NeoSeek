@@ -1,0 +1,23 @@
+/* --- NOUVEAU STYLE POUR LE CONTENEUR .logo --- */
+.logo {
+    /* Style du cercle du logo */
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid #3f51b5;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* TRÈS IMPORTANT : Cache l'image si elle dépasse le cercle */
+}
+
+/* --- NOUVEAU STYLE POUR L'IMAGE --- */
+.logo-img {
+    /* L'image doit prendre toute la place disponible dans le conteneur .logo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image remplit l'espace sans se déformer */
+}
+
+/* --- (Le .logo-container et .header restent inchangés) --- */
