@@ -1,0 +1,13 @@
+# Dossier des dépendances de Node.js (TRÈS IMPORTANT)
+/frontend/node_modules
+/backend/node_modules
+
+# Fichiers de build et de cache (si vous utilisez Next.js ou autre)
+.next/
+dist/
+build/
+
+# Fichiers spécifiques à Meilisearch (binaires et données)
+# Le .exe est un binaire, la base de données ne doit pas être versionnée
+/backend/meilisearch/meilisearch.exe
+/backend/meilisearch/data.ms
