@@ -1,23 +1,38 @@
-/* --- NOUVEAU STYLE POUR LE CONTENEUR .logo --- */
-.logo {
-    /* Style du cercle du logo */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    border: 2px solid #3f51b5;
-    background-color: transparent;
+/* --- NOUVEAUX STYLES : BARRE DE RECHERCHE BLANCHE, LARGE ET ÉPURÉE --- */
+
+.search-bar-container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    overflow: hidden; /* TRÈS IMPORTANT : Cache l'image si elle dépasse le cercle */
-}
-
-/* --- NOUVEAU STYLE POUR L'IMAGE --- */
-.logo-img {
-    /* L'image doit prendre toute la place disponible dans le conteneur .logo */
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Assure que l'image remplit l'espace sans se déformer */
+    
+    /* MODIFICATION CLÉ : Augmenté à 1000px pour plus de longueur */
+    max-width: 1000000px; 
+    
+    /* STYLE BLANC */
+    background-color: white; 
+    border: 1px solid #ccc; 
+    color: #333; 
+    
+    /* GRANDE ET ARRONDIE */
+    border-radius: 40px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+    overflow: hidden;
 }
 
-/* --- (Le .logo-container et .header restent inchangés) --- */
+.search-input {
+    /* GRANDEUR */
+    flex-grow: 1; 
+    
+    /* Padding augmenté pour plus de hauteur et un style moins compact */
+    padding: 
+    15px 15px; 
+    font-size: 18px; 
+    
+    /* STYLE BLANC */
+    background-color: white;
+    color: black; 
+    border: none;
+    outline: none;
+}
+
+/* ... le reste des styles reste inchangé ... */

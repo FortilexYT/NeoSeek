@@ -8,10 +8,6 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [stats, setStats] = useState(null);
 
-  const MEILI_URL = "http://127.0.0.1:7700";
-  // ATTENTION: Remplace la clé ci-dessous par TA VRAIE CLÉ d'accès (rVR_Z3zs5Ah3zwbrhj1HL7SgxoCssmdBiQd6A1Coj4)
-  const MEILI_KEY = "rVR_Z3zs5Ah3zwbrhj1HL7SgxoCssmdBiQd6A1Coj4"; 
-
   const search = useCallback(async (searchQuery) => {
     if (!searchQuery.trim()) {
       setResults([]);
@@ -22,23 +18,21 @@ export default function Home() {
     setIsLoading(true);
 
     try {
-      const res = await fetch(`${MEILI_URL}/indexes/docs/search`, {
+      // APPEL SÉCURISÉ : Utilisation de la Route API locale
+      const res = await fetch(`/api/search`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": `Bearer ${MEILI_KEY}`
         },
         body: JSON.stringify({ 
-            q: searchQuery,
-            attributesToHighlight: ['title', 'content'], // On demande la surbrillance
-            highlightPreTag: '<strong>',
-            highlightPostTag: '</strong>',
-            limit: 20 // Limite de 20 résultats
+            query: searchQuery, 
         })
       });
 
       if (!res.ok) {
-        throw new Error(`Erreur HTTP: ${res.status} ${res.statusText}`);
+        const errorDetails = await res.json();
+        console.error(`Erreur de recherche via API: ${res.status}`, errorDetails);
+        throw new Error(`Erreur lors de la recherche.`);
       }
 
       const data = await res.json();
@@ -55,7 +49,7 @@ export default function Home() {
     } finally {
       setIsLoading(false);
     }
-  }, [MEILI_KEY, MEILI_URL]);
+  }, []); 
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -76,15 +70,29 @@ export default function Home() {
       </Head>
 
       <header className="header">
-        <div className="logo-container">
-          <div className="logo">
-            {/* REMPLACEZ CE CHEMIN PAR LE CHEMIN DE VOTRE VRAI LOGO */}
-            <img src="/images/neo_logo.png" alt="NeoSeek Logo" className="logo-img" /> 
+        
+        {/* LOGO CONTAINER : Aligné avec un espace de 10px */}
+        <div className="logo-container" style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          
+          {/* LOGO : Taille forcée à 120x120px */}
+          <div className="logo" style={{ width: '120px', height: '120px' }}>
+            
+            {/* Chemin du fichier corrigé */}
+            <img 
+                src="/logo.png" 
+                alt="NeoSeek Logo" 
+                className="logo-img"
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+            /> 
           </div>
           <h1 className="app-name">NEOSEEK</h1>
         </div>
         
-        <div className="search-bar-container">
+        {/* BARRE DE RECHERCHE : Longueur forcée à 900px et centrée */}
+        <div 
+          className="search-bar-container"
+          style={{ maxWidth: '315px', width: '100%', margin: '-87px auto 0 auto' }} 
+        >
           <input
             type="text"
             className="search-input"

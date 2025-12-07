@@ -8,34 +8,39 @@ MEILI_KEY = "rVR_Z3zs5Ah3zwbrJhj1HL7SgxoCssmdBiQd6A1Coj4"
 print("🧠 Configuration du Cerveau de NeoSeek en cours...")
 
 # 1. Les "Stop Words" (Mots à ignorer car trop courants)
-# Ça va nettoyer tes recherches instantanément !
 stop_words = [
     "le", "la", "les", "de", "des", "du", "un", "une", "et", "ou", "à", "en", "pour", 
     "par", "sur", "dans", "est", "sont", "c'est", "ce", "ces", "mais", "pas", "plus"
 ]
 
 # 2. L'ordre d'importance (Ranking)
-# On dit : "Cherche d'abord dans le TITRE, et ensuite dans le CONTENU".
 searchable_attributes = [
     "title",
     "content",
     "url"
 ]
 
-# 3. Les règles de tri
+# 3. Les attributs qui peuvent être utilisés pour le tri (SRAS)
+# NOUVEAU : On rend le champ SRAS utilisable par la règle de tri
+sortable_attributes = [
+    "internal_link_count" 
+]
+
+# 4. Les règles de tri
 ranking_rules = [
+    "sort",       # 👈 NOUVEAU: Mouvement de 'sort' en tête pour prioriser le SRAS !
     "words",      # Le nombre de mots correspondants (Le plus important)
     "typo",       # La tolérance aux fautes d'orthographe
     "proximity",  # Si les mots sont proches les uns des autres
     "attribute",  # L'importance du champ (Titre > Contenu)
-    "sort",
     "exactness"
 ]
 
 settings = {
     "stopWords": stop_words,
     "searchableAttributes": searchable_attributes,
-    "rankingRules": ranking_rules
+    "rankingRules": ranking_rules,
+    "sortableAttributes": sortable_attributes # 👈 Ajout du SRAS aux attributs triables
 }
 
 try:
