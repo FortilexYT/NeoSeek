@@ -1,5 +1,5 @@
 requests
-requests
-wikipedia-api
-duckduckgo-search
 beautifulsoup4
+duckduckgo-search
+scikit-learn
+langdetect
